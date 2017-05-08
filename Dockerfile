@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-MAINTAINER Michael Mitchell <mmitchel@gmail.com>
+MAINTAINER mike brown <mike@mikebrown.org.uk>
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -42,6 +42,15 @@ ENV PATH $PATH:/opt/microchip/xc16/bin
 #    && rm /tmp/xc32.run
 #
 #ENV PATH $PATH:/opt/microchip/xc32/bin
+
+# Download and Install Legacy Peripheral Libraries (PIC24)
+
+RUN curl -fSL -A "Mozilla/4.0" -o /tmp/xc16.run \
+        "http://ww1.microchip.com/downloads/en/softwarelibrary/pic24%20mcu%20dspic%20peripheral%20lib/peripheral-libraries-for-pic24-and-dspic-v2.00-linux-installer.run" \
+    && chmod a+x /tmp/xc16.run \
+    && /tmp/xc16.run --mode unattended --unattendedmodeui none \
+        --prefix /opt/microchip/xc16 \
+    && rm /tmp/xc16.run
 
 # Download and Install MPLABX IDE, Current Version
 
