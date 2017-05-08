@@ -9,7 +9,7 @@ Info
 This Docker Container is intended to capture a general method that developers can work with a similar
 tool chain on demand.
 
-docker build -t xc16  docker build github.com/kamacurus/docker-xc16
+docker build -t xc16 github.com/kamacurus/docker-xc16
 
 example run cmd
 docker run -i -t --privileged -v ~/Projects/proj:/home/user/proj:Z -w /home/user/proj xc16 /bin/bash
